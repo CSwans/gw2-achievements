@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import fetchAchievementGroups from './api/achievementGroups'
-import AchievementGroup from './AchievementGroup'
+import React, { useEffect, useState } from "react"
+import fetchAchievementGroups from "./api/achievementGroups"
+import AchievementGroupLink from "./AchievementGroupLink"
 
 const Component = () => {
     const [groups, setGroups] = useState([])
-    useEffect(async () => {  
+    useEffect(async () => {
         setGroups(await fetchAchievementGroups())
     }, [])
 
-    console.log("Groups", groups)
-    
-    return groups.map(groupId => <AchievementGroup id={groupId}/>)
+    return (
+        <ul>
+            {groups.map((group) => (
+                <li>
+                    <AchievementGroupLink groupId={group} />
+                </li>
+            ))}
+        </ul>
+    )
 }
 
 export default Component

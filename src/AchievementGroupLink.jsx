@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
+import { Link } from "react-router-dom"
 import fetchAchievementGroup from "./api/achievementGroup"
 
-const Component = () => {
-    let { groupId } = useParams()
+const Component = ({ groupId }) => {
     const [group, setGroup] = useState([])
     useEffect(async () => {
         setGroup(await fetchAchievementGroup({ id: groupId }))
     }, [groupId])
 
-    console.log("Group", groupId, group)
-
-    return (
-        <>
-            <h1>{group?.name}</h1>
-            <p>{group?.description}</p>
-        </>
-    )
+    return <Link to={`/groups/${groupId}`}>{group?.name ?? "Unknown"}</Link>
 }
 
 export default Component
