@@ -10,7 +10,6 @@ const Component = () => {
         setCategry(await fetchAchievementCategory({ id: categoryId }))
     }, [categoryId])
 
-    console.log("Category", categoryId, category)
     return (
         <>
             <h1>{category?.name}</h1>
