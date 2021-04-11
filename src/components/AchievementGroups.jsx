@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import fetchAchievementGroups from "./api/achievementGroups"
+import fetchAchievementGroups from "../api/achievementGroups"
 import AchievementGroupLink from "./AchievementGroupLink"
 
 const Component = () => {

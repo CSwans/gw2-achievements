@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import fetchAchievementGroup from "./api/achievementGroup"
+import fetchAchievementGroup from "../api/achievementGroup"
 
 const Component = () => {
     let { groupId } = useParams()

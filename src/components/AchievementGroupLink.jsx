@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import fetchAchievementGroup from "./api/achievementGroup"
+import fetchAchievementGroup from "../api/achievementGroup"
 
 const Component = ({ groupId }) => {
     const [group, setGroup] = useState([])
