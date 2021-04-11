@@ -6,8 +6,11 @@ import AchievementCategoryLink from "./AchievementCategoryLink"
 const Component = () => {
     let { groupId } = useParams()
     const [group, setGroup] = useState([])
-    useEffect(async () => {
-        setGroup(await fetchAchievementGroup({ id: groupId }))
+    useEffect(() => {
+        const set = async () => {
+            setGroup(await fetchAchievementGroup({ id: groupId }))
+        }
+        set()
     }, [groupId])
 
     console.log("Group", groupId, group)

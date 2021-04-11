@@ -4,8 +4,11 @@ import fetchAchievementCategory from "../api/achievementCategory"
 
 const Component = ({ categoryId }) => {
     const [category, setCategory] = useState([])
-    useEffect(async () => {
-        setCategory(await fetchAchievementCategory({ id: categoryId }))
+    useEffect(() => {
+        const set = async () => {
+            setCategory(await fetchAchievementCategory({ id: categoryId }))
+        }
+        set()
     }, [categoryId])
 
     return (

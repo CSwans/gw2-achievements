@@ -6,8 +6,11 @@ import AchievementLink from "./AchievementLink"
 const Component = () => {
     const { categoryId } = useParams()
     const [category, setCategry] = useState()
-    useEffect(async () => {
-        setCategry(await fetchAchievementCategory({ id: categoryId }))
+    useEffect(() => {
+        const set = async () => {
+            setCategry(await fetchAchievementCategory({ id: categoryId }))
+        }
+        set()
     }, [categoryId])
 
     return (

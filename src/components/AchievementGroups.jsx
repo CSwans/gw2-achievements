@@ -4,8 +4,11 @@ import AchievementGroupLink from "./AchievementGroupLink"
 
 const Component = () => {
     const [groups, setGroups] = useState([])
-    useEffect(async () => {
-        setGroups(await fetchAchievementGroups())
+    useEffect(() => {
+        const set = async () => {
+            setGroups(await fetchAchievementGroups())
+        }
+        set()
     }, [])
 
     return (
