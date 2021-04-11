@@ -1,0 +1,1 @@
+export const baseUrl = "https://api.guildwars2.com/v2"
