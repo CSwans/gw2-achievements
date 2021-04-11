@@ -1,14 +1,14 @@
 import { baseUrl } from "."
 
-const fetchAchievements = async ({ids = []}) => {   
+const fetchAchievements = async ({ ids = [] }) => {
     try {
-        const res = await fetch(`${baseUrl}/achievements?ids=${ids.join(',')}`)
+        const res = await fetch(`${baseUrl}/achievements?ids=${ids.join(",")}`)
         if (res.ok) {
             const data = await res.json()
             console.log(data)
             return data
         }
-    } catch(e) {
+    } catch (e) {
         throw new Error()
     }
 }

@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
 import fetchAchievementCategory from "../api/achievementCategory"
+import AchievementLink from "./AchievementLink"
 
-const Component = ({ id }) => {
+const Component = () => {
+    const { categoryId } = useParams()
     const [category, setCategry] = useState()
     useEffect(async () => {
-        setCategry(await fetchAchievementCategory({ id }))
-    }, [])
-    console.log("Category", id, category)
-    return <div>{category?.name ?? "unknown"}</div>
+        setCategry(await fetchAchievementCategory({ id: categoryId }))
+    }, [categoryId])
+
+    console.log("Category", categoryId, category)
+    return (
+        <>
+            <h1>{category?.name}</h1>
+            <p>{category?.description}</p>
+            {category?.achievements?.map((achievment) => (
+                <li>
+                    <AchievementLink achievementId={achievment} />
+                </li>
+            ))}
+        </>
+    )
 }
 
 export default Component
