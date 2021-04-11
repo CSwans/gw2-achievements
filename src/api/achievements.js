@@ -5,7 +5,6 @@ const fetchAchievements = async ({ ids = [] }) => {
         const res = await fetch(`${baseUrl}/achievements?ids=${ids.join(",")}`)
         if (res.ok) {
             const data = await res.json()
-            console.log(data)
             return data
         }
     } catch (e) {
