@@ -5,7 +5,8 @@ import fetchAchievements from "../api/achievements"
 const Component = ({ achievementId }) => {
     const [achievement, setAchievement] = useState()
     useEffect(async () => {
-        setAchievement((await fetchAchievements({ ids: [achievementId] }))[0])
+        const [tmp] = await fetchAchievements({ ids: [achievementId] })
+        setAchievement(tmp)
     }, [achievementId])
 
     return (

@@ -15,9 +15,9 @@ const Component = () => {
         <>
             <h1>{category?.name}</h1>
             <p>{category?.description}</p>
-            {category?.achievements?.map((achievment) => (
+            {category?.achievements?.map((achievement) => (
                 <li>
-                    <AchievementLink achievementId={achievment} />
+                    <AchievementLink achievementId={achievement} />
                 </li>
             ))}
         </>
