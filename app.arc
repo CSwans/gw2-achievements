@@ -2,8 +2,7 @@
 begin-app
 
 @static
-
-@http
+folder build
 
 @tables
 data
