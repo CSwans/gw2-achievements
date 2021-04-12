@@ -32,7 +32,7 @@ const Component = () => {
                     <tr>
                         {keys.map(key => 
                             <td>
-                                {key.achievements.map(a => a.id).includes(achievement?.id) ? "✓" : "✗"}
+                                {key.achievements.findIndex(a =>  ((a.id === parseInt(achievementId)) && a.done)) !== -1 ? "✓" : "✗"}
                             </td>
                         )}
                     </tr>
