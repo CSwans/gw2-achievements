@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import fetchAchievements from "../api/achievements"
+import useStore from "../store"
 
 const Component = () => {
+    const keys = useStore(store => store.keys)
     const { achievementId } = useParams()
     const [achievement, setAchievement] = useState()
     useEffect(() => {
@@ -18,6 +20,24 @@ const Component = () => {
             <h1>{achievement?.name}</h1>
             <p>{achievement?.description}</p>
             <p>{achievement?.requirement}</p>
+            <table>
+                <thead>
+                    <tr>
+                        {keys.map(key => 
+                                <td>{key.name}</td>
+                        )}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {keys.map(key => 
+                            <td>
+                                {key.achievements.map(a => a.id).includes(achievement?.id) ? "✓" : "✗"}
+                            </td>
+                        )}
+                    </tr>
+                </tbody>
+            </table>
         </>
     )
 }
