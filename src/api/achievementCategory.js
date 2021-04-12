@@ -5,7 +5,6 @@ const fetchAchievementCategory = async ({ id }) => {
         const res = await fetch(`${baseUrl}/achievements/categories/${id}`)
         if (res.ok) {
             const data = await res.json()
-            console.log(data)
             return data
         }
     } catch(e) {

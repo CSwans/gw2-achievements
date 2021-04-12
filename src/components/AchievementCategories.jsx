@@ -11,8 +11,6 @@ const Component = () => {
         set()
     }, [])
 
-    console.log("Categories", categories)
-
     return categories.map((categoryId) => (
         <AchievementCategory id={categoryId} />
     ))

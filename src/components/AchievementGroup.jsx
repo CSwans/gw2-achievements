@@ -13,8 +13,6 @@ const Component = () => {
         set()
     }, [groupId])
 
-    console.log("Group", groupId, group)
-
     return (
         <>
             <h1>{group?.name}</h1>
