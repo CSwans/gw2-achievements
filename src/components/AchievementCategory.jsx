@@ -18,7 +18,7 @@ const Component = () => {
             <h1>{category?.name}</h1>
             <p>{category?.description}</p>
             {category?.achievements?.map((achievement) => (
-                <li>
+                <li key={achievement}>
                     <AchievementLink achievementId={achievement} />
                 </li>
             ))}

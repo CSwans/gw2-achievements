@@ -14,7 +14,7 @@ const Component = () => {
     return (
         <ul>
             {groups.map((group) => (
-                <li>
+                <li key={group}>
                     <AchievementGroupLink groupId={group} />
                 </li>
             ))}

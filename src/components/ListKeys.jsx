@@ -15,7 +15,8 @@ const Component = () => {
                 </tr>
             </thead>
             <tbody>
-                {savedKeys.map(key => <tr>
+                {savedKeys.map(key => 
+                    <tr key={key.name}>
                         <td>{key.name}</td>
                         <td>{key.value}</td>
                         <td>
@@ -23,7 +24,8 @@ const Component = () => {
                                 Delete
                             </button>
                         </td>
-                    </tr>)}
+                    </tr>
+                )}
             </tbody>
         </table>
     )

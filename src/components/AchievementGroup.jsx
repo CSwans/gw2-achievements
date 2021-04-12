@@ -18,7 +18,7 @@ const Component = () => {
             <h1>{group?.name}</h1>
             <p>{group?.description}</p>
             {group?.categories?.map((category) => (
-                <li>
+                <li key={category}>
                     <AchievementCategoryLink categoryId={category} />
                 </li>
             ))}
