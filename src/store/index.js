@@ -1,10 +1,14 @@
 import create from 'zustand'
 import { persist } from "zustand/middleware"
+import fetchAccountAchievements from "../api/accountAchievements"
 
 export const useStore = create(persist(
     (set) => ({
         keys: [],
-        saveNewKey: (newKey) => set(state => ({ keys: [...state.keys, newKey ] })),
+        saveNewKey: async (newKey) => {
+            const accountAchievements = await fetchAccountAchievements({ accountKey: newKey.value })
+            set(state => ({ keys: [...state.keys, { ...newKey, achievements: accountAchievements } ] }))
+        },
         deleteKey: (keyName) => set(state => ({ keys: state.keys.filter(key => key.name !== keyName) }))
     }),
     {
