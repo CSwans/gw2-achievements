@@ -3,10 +3,12 @@ import AchievementGroups from "./components/AchievementGroups"
 import AchievementGroup from "./components/AchievementGroup"
 import AchievementCategory from "./components/AchievementCategory"
 import Achievement from "./components/Achievement"
+import AddKey from "./components/AddKey"
 
 function App() {
     return (
         <Router>
+            <AddKey />
             <Switch>
                 <Route path={"/achievements/:achievementId"}>
                     <Achievement />
