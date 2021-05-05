@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import fetchAchievementGroups from "../api/achievementGroups"
-import AchievementGroupLink from "./AchievementGroupLink"
+import ListLink from "./ListLink"
+import fetchAchievementGroup from "../api/achievementGroup"
 
 const Component = () => {
     const [groups, setGroups] = useState([])
@@ -12,13 +13,15 @@ const Component = () => {
     }, [])
 
     return (
-        <ul>
-            {groups.map((group) => (
-                <li key={group}>
-                    <AchievementGroupLink groupId={group} />
-                </li>
+        <div className="flex flex-col">
+            {groups.map((groupId) => (
+                <ListLink
+                    id={groupId}
+                    urlPrefix=""
+                    dataFetch={fetchAchievementGroup}
+                />
             ))}
-        </ul>
+        </div>
     )
 }
 

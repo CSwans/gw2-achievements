@@ -1,28 +1,37 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
+import { useRouteMatch } from "react-router"
 import fetchAchievementGroup from "../api/achievementGroup"
-import AchievementCategoryLink from "./AchievementCategoryLink"
+import ListLink from "./ListLink"
+import fetchAchievementCategory from "../api/achievementCategory"
 
 const Component = () => {
-    let { groupId } = useParams()
+    const match = useRouteMatch("/:groupId")
+    const groupId = match?.params.groupId
+
     const [group, setGroup] = useState([])
     useEffect(() => {
         const set = async () => {
             setGroup(await fetchAchievementGroup({ id: groupId }))
         }
+
         set()
     }, [groupId])
 
+    if (!group) {
+        return null
+    }
+
     return (
-        <>
-            <h1>{group?.name}</h1>
-            <p>{group?.description}</p>
-            {group?.categories?.map((category) => (
-                <li key={category}>
-                    <AchievementCategoryLink categoryId={category} />
-                </li>
+        <div className="flex flex-col">
+            {group.categories?.map((category) => (
+                <ListLink
+                    key={category}
+                    id={category}
+                    urlPrefix={`/${groupId}`}
+                    dataFetch={fetchAchievementCategory}
+                />
             ))}
-        </>
+        </div>
     )
 }
 
